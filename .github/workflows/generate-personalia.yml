@@ -1,5 +1,8 @@
 name: Generate Personalia Master JSON
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
