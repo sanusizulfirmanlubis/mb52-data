@@ -32,10 +32,9 @@
     "Mulai Dinas (YYYY-MM-DD)": 34346,
     "Tanggal Lahir (YYYY-MM-DD)": 27246,
     "TMT Pensiun (YYYY-MM-DD)": 47727,
-    "No PRP": "PMP.050874.41240",
-    "Berlaku PRP (YYYY-MM-DD)": 46448,
     "No PMP": "PMP.050874.41240",
-    "Berlaku PMP (YYYY-MM-DD)": 46448
+    "Berlaku PMP (YYYY-MM-DD)": 46448,
+    "Tingkat PMP": "PMP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -53,8 +52,10 @@
     "TMT Pensiun (YYYY-MM-DD)": 46569,
     "No PRP": "PRP. 050671. 127183",
     "Berlaku PRP (YYYY-MM-DD)": 45696,
+    "Tingkat PRP": "PRP Lanjutan",
     "No PMP": "PMP.050671.74674",
-    "Berlaku PMP (YYYY-MM-DD)": 47370
+    "Berlaku PMP (YYYY-MM-DD)": 47370,
+    "Tingkat PMP": "PMP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -107,7 +108,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 33900,
     "TMT Pensiun (YYYY-MM-DD)": 54363,
     "No PRP": "PRP.231092.41078",
-    "Berlaku PRP (YYYY-MM-DD)": 46448
+    "Berlaku PRP (YYYY-MM-DD)": 46448,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -124,7 +126,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 33728,
     "TMT Pensiun (YYYY-MM-DD)": 54210,
     "No PRP": "PRP.050492.00580",
-    "Berlaku PRP (YYYY-MM-DD)": 46610
+    "Berlaku PRP (YYYY-MM-DD)": 46610,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -171,7 +174,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 25681,
     "TMT Pensiun (YYYY-MM-DD)": 46143,
     "No PRP": "PRP.230470.126895",
-    "Berlaku PRP (YYYY-MM-DD)": 47324
+    "Berlaku PRP (YYYY-MM-DD)": 47324,
+    "Tingkat PRP": "PRP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -188,7 +192,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 32077,
     "TMT Pensiun (YYYY-MM-DD)": 52536,
     "No PRP": "PRP.271087.123427",
-    "Berlaku PRP (YYYY-MM-DD)": 46937
+    "Berlaku PRP (YYYY-MM-DD)": 46937,
+    "Tingkat PRP": "PRP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -205,7 +210,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 31758,
     "TMT Pensiun (YYYY-MM-DD)": 52232,
     "No PRP": "PRP.121286.127123",
-    "Berlaku PRP (YYYY-MM-DD)": 47175
+    "Berlaku PRP (YYYY-MM-DD)": 47175,
+    "Tingkat PRP": "PRP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -222,7 +228,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 33294,
     "TMT Pensiun (YYYY-MM-DD)": 53752,
     "No PRP": "PRP.250291.00667",
-    "Berlaku PRP (YYYY-MM-DD)": 46950
+    "Berlaku PRP (YYYY-MM-DD)": 46950,
+    "Tingkat PRP": "PRP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -239,7 +246,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 34908,
     "TMT Pensiun (YYYY-MM-DD)": 55366,
     "No PRP": "PRP.280795.122308",
-    "Berlaku PRP (YYYY-MM-DD)": 46950
+    "Berlaku PRP (YYYY-MM-DD)": 46950,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -256,7 +264,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 32291,
     "TMT Pensiun (YYYY-MM-DD)": 52749,
     "No PRP": "PRP.280588.126560",
-    "Berlaku PRP (YYYY-MM-DD)": 47114
+    "Berlaku PRP (YYYY-MM-DD)": 47114,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -273,7 +282,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 35421,
     "TMT Pensiun (YYYY-MM-DD)": 55885,
     "No PRP": "PRP.221296.40697",
-    "Berlaku PRP (YYYY-MM-DD)": 46433
+    "Berlaku PRP (YYYY-MM-DD)": 46433,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -290,7 +300,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 35095,
     "TMT Pensiun (YYYY-MM-DD)": 55550,
     "No PRP": "PRP.310196.40567",
-    "Berlaku PRP (YYYY-MM-DD)": 46433
+    "Berlaku PRP (YYYY-MM-DD)": 46433,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -307,7 +318,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 37127,
     "TMT Pensiun (YYYY-MM-DD)": 57589,
     "No PRP": "PRP.240801.57674",
-    "Berlaku PRP (YYYY-MM-DD)": 46916
+    "Berlaku PRP (YYYY-MM-DD)": 46916,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -325,8 +337,10 @@
     "TMT Pensiun (YYYY-MM-DD)": 51867,
     "No PRP": "PRP.231285.126569",
     "Berlaku PRP (YYYY-MM-DD)": 47175,
+    "Tingkat PRP": "PRP Lanjutan",
     "No PMP": "PMP.231285.75601",
-    "Berlaku PMP (YYYY-MM-DD)": 47370
+    "Berlaku PMP (YYYY-MM-DD)": 47370,
+    "Tingkat PMP": "PMP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -358,7 +372,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 33911,
     "TMT Pensiun (YYYY-MM-DD)": 54393,
     "No PRP": "PRP.031192.00630",
-    "Berlaku PRP (YYYY-MM-DD)": 46881
+    "Berlaku PRP (YYYY-MM-DD)": 46881,
+    "Tingkat PRP": "PRP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -375,7 +390,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 34526,
     "TMT Pensiun (YYYY-MM-DD)": 55001,
     "No PRP": "PRP.071194.40423",
-    "Berlaku PRP (YYYY-MM-DD)": 46433
+    "Berlaku PRP (YYYY-MM-DD)": 46433,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -392,7 +408,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 34362,
     "TMT Pensiun (YYYY-MM-DD)": 54820,
     "No PRP": "PRP.280194.40425",
-    "Berlaku PRP (YYYY-MM-DD)": 46433
+    "Berlaku PRP (YYYY-MM-DD)": 46433,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -424,7 +441,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 29110,
     "TMT Pensiun (YYYY-MM-DD)": 49583,
     "No PRP": "PRP.091279.00641",
-    "Berlaku PRP (YYYY-MM-DD)": 46610
+    "Berlaku PRP (YYYY-MM-DD)": 46610,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -441,7 +459,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 28103,
     "TMT Pensiun (YYYY-MM-DD)": 48580,
     "No PRP": "PRP.091276.126620",
-    "Berlaku PRP (YYYY-MM-DD)": 47203
+    "Berlaku PRP (YYYY-MM-DD)": 47203,
+    "Tingkat PRP": "PRP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -458,7 +477,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 34129,
     "TMT Pensiun (YYYY-MM-DD)": 54605,
     "No PRP": "PRP.090693.126823",
-    "Berlaku PRP (YYYY-MM-DD)": 47175
+    "Berlaku PRP (YYYY-MM-DD)": 47175,
+    "Tingkat PRP": "PRP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -475,7 +495,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 32125,
     "TMT Pensiun (YYYY-MM-DD)": 52597,
     "No PRP": "PRP.141287.126822",
-    "Berlaku PRP (YYYY-MM-DD)": 47203
+    "Berlaku PRP (YYYY-MM-DD)": 47203,
+    "Tingkat PRP": "PRP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -537,7 +558,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 29602,
     "TMT Pensiun (YYYY-MM-DD)": 50072,
     "No PRP": "PRP.160181.00640",
-    "Berlaku PRP (YYYY-MM-DD)": 47265
+    "Berlaku PRP (YYYY-MM-DD)": 47265,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -554,7 +576,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 35842,
     "TMT Pensiun (YYYY-MM-DD)": 56309,
     "No PRP": "PRP.030298.39722",
-    "Berlaku PRP (YYYY-MM-DD)": 46446
+    "Berlaku PRP (YYYY-MM-DD)": 46446,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -601,7 +624,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 35106,
     "TMT Pensiun (YYYY-MM-DD)": 55579,
     "No PRP": "PRP.061196.39723",
-    "Berlaku PRP (YYYY-MM-DD)": 46446
+    "Berlaku PRP (YYYY-MM-DD)": 46446,
+    "Tingkat PRP": "PRP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -618,7 +642,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 26831,
     "TMT Pensiun (YYYY-MM-DD)": 47300,
     "No PRP": "PRP.160673.00583",
-    "Berlaku PRP (YYYY-MM-DD)": 47175
+    "Berlaku PRP (YYYY-MM-DD)": 47175,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -635,7 +660,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 35539,
     "TMT Pensiun (YYYY-MM-DD)": 56005,
     "No PRP": "PRP.190497.41652",
-    "Berlaku PRP (YYYY-MM-DD)": 46476
+    "Berlaku PRP (YYYY-MM-DD)": 46476,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -652,7 +678,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 33497,
     "TMT Pensiun (YYYY-MM-DD)": 53966,
     "No PRP": "PRP.160991.40424",
-    "Berlaku PRP (YYYY-MM-DD)": 46433
+    "Berlaku PRP (YYYY-MM-DD)": 46433,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -669,7 +696,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 32817,
     "TMT Pensiun (YYYY-MM-DD)": 53297,
     "No PRP": "PRP.051189.126553",
-    "Berlaku PRP (YYYY-MM-DD)": 47114
+    "Berlaku PRP (YYYY-MM-DD)": 47114,
+    "Tingkat PRP": "PRP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -686,7 +714,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 33855,
     "TMT Pensiun (YYYY-MM-DD)": 54332,
     "No PRP": "PRP.090892.00643",
-    "Berlaku PRP (YYYY-MM-DD)": 47324
+    "Berlaku PRP (YYYY-MM-DD)": 47324,
+    "Tingkat PRP": "PRP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -703,7 +732,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 34156,
     "TMT Pensiun (YYYY-MM-DD)": 54636,
     "No PRP": "PRP.070693.00579",
-    "Berlaku PRP (YYYY-MM-DD)": 47114
+    "Berlaku PRP (YYYY-MM-DD)": 47114,
+    "Tingkat PRP": "PRP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -750,7 +780,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 35459,
     "TMT Pensiun (YYYY-MM-DD)": 55916,
     "No PRP": "PRP.290197.40696",
-    "Berlaku PRP (YYYY-MM-DD)": 46433
+    "Berlaku PRP (YYYY-MM-DD)": 46433,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -768,8 +799,10 @@
     "TMT Pensiun (YYYY-MM-DD)": 53297,
     "No PRP": "PRP.031189.126428",
     "Berlaku PRP (YYYY-MM-DD)": 47114,
+    "Tingkat PRP": "PRP Lanjutan",
     "No PMP": "PMP.031189.75600",
-    "Berlaku PMP (YYYY-MM-DD)": 47370
+    "Berlaku PMP (YYYY-MM-DD)": 47370,
+    "Tingkat PMP": "PMP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -801,7 +834,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 32664,
     "TMT Pensiun (YYYY-MM-DD)": 53144,
     "No PRP": "PRP.050689.126568",
-    "Berlaku PRP (YYYY-MM-DD)": 47324
+    "Berlaku PRP (YYYY-MM-DD)": 47324,
+    "Tingkat PRP": "PRP Lanjutan"
   },
   {
     "Wilayah": "9 JR",
@@ -818,7 +852,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 33905,
     "TMT Pensiun (YYYY-MM-DD)": 54363,
     "No PRP": "PRP.281092.117995",
-    "Berlaku PRP (YYYY-MM-DD)": 46837
+    "Berlaku PRP (YYYY-MM-DD)": 46837,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -835,7 +870,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 35843,
     "TMT Pensiun (YYYY-MM-DD)": 56309,
     "No PRP": "PRP.170298.40390",
-    "Berlaku PRP (YYYY-MM-DD)": 46433
+    "Berlaku PRP (YYYY-MM-DD)": 46433,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
@@ -852,7 +888,8 @@
     "Tanggal Lahir (YYYY-MM-DD)": 32067,
     "TMT Pensiun (YYYY-MM-DD)": 52536,
     "No PRP": "PRP.171087.00581",
-    "Berlaku PRP (YYYY-MM-DD)": 47114
+    "Berlaku PRP (YYYY-MM-DD)": 47114,
+    "Tingkat PRP": "PRP Pelaksana"
   },
   {
     "Wilayah": "9 JR",
