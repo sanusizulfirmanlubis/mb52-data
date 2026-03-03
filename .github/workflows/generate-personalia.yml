@@ -92,7 +92,13 @@ jobs:
               const rowNumber = index + 2;
 
               const nama = (row["Nama"] || "").toString().trim();
-              const nipp = (row["NIPP"] || "").toString().trim();
+              let nippRaw = row["NIPP"];
+
+if (typeof nippRaw === "number") {
+  nippRaw = Math.floor(nippRaw).toString();
+}
+
+const nipp = (nippRaw || "").toString().trim();
               const pendidikan = (row["Pendidikan"] || "").toString().trim();
               const mulaiDinas = (row["Mulai Dinas (YYYY-MM-DD)"] || "").toString().trim();
               const tglLahir = (row["Tanggal Lahir (YYYY-MM-DD)"] || "").toString().trim();
