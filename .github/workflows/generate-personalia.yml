@@ -24,35 +24,78 @@ jobs:
           npm init -y
           npm install xlsx
 
-      - name: Generate JSON
-        run: |
-          node <<EOF
-          const fs = require("fs");
-          const path = require("path");
-          const XLSX = require("xlsx");
+- name: Generate JSON with Validation
+  run: |
+    node <<EOF
+    const fs = require("fs");
+    const path = require("path");
+    const XLSX = require("xlsx");
 
-          const folderPath = "data/personalia";
-          let masterData = [];
+    const REQUIRED_HEADERS = [
+      "Wilayah",
+      "Nama",
+      "NIPP",
+      "Level Jabatan",
+      "Tingkat Jabatan",
+      "Posisi",
+      "UPT",
+      "TMT Posisi (YYYY-MM-DD)",
+      "Grade",
+      "Pendidikan",
+      "Mulai Dinas (YYYY-MM-DD)",
+      "Tanggal Lahir (YYYY-MM-DD)",
+      "TMT Pensiun (YYYY-MM-DD)",
+      "No PRP",
+      "Berlaku PRP (YYYY-MM-DD)",
+      "Tingkat PRP",
+      "No PMP",
+      "Berlaku PMP (YYYY-MM-DD)",
+      "Tingkat PMP",
+      "No WA"
+    ];
 
-          if (fs.existsSync(folderPath)) {
-            fs.readdirSync(folderPath).forEach((file) => {
-              if (file.endsWith(".xlsx")) {
-                const filePath = path.join(folderPath, file);
-                const workbook = XLSX.readFile(filePath);
-                const sheet = workbook.Sheets[workbook.SheetNames[0]];
-                const rows = XLSX.utils.sheet_to_json(sheet);
-                masterData = masterData.concat(rows);
-              }
-            });
+    const folderPath = "data/personalia";
+    let masterData = [];
+
+    if (!fs.existsSync(folderPath)) {
+      throw new Error("Folder personalia tidak ditemukan!");
+    }
+
+    fs.readdirSync(folderPath).forEach((file) => {
+      if (file.endsWith(".xlsx")) {
+
+        console.log("Checking file:", file);
+
+        const filePath = path.join(folderPath, file);
+        const workbook = XLSX.readFile(filePath);
+        const sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+        const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+        const headers = json[0];
+
+        // VALIDASI HEADER
+        REQUIRED_HEADERS.forEach((req) => {
+          if (!headers.includes(req)) {
+            throw new Error(
+              `Header "${req}" tidak ditemukan di file ${file}`
+            );
           }
+        });
 
-          fs.writeFileSync(
-            "data/personalia_master.json",
-            JSON.stringify(masterData, null, 2)
-          );
+        // Kalau lolos validasi
+        const rows = XLSX.utils.sheet_to_json(sheet);
+        masterData = masterData.concat(rows);
+      }
+    });
 
-          console.log("Master JSON generated");
-          EOF
+    fs.writeFileSync(
+      "data/personalia_master.json",
+      JSON.stringify(masterData, null, 2)
+    );
+
+    console.log("Master JSON generated successfully");
+    EOF
 
       - name: Commit JSON
         run: |
