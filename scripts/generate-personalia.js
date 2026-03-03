@@ -69,7 +69,7 @@ fs.readdirSync(folderPath).forEach((file) => {
 const fileNameWithoutExt = file.replace(".xlsx", "").trim();
 
 // Hapus angka + spasi di depan
-const wilayahFromFile = fileNameWithoutExt.replace(/^\d+\s*/, "").trim();
+const wilayahFromFile = fileNameWithoutExt.trim();
   
   const filePath = path.join(folderPath, file);
   const workbook = XLSX.readFile(filePath);
