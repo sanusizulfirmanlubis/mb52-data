@@ -63,6 +63,14 @@ fs.readdirSync(folderPath).forEach((file) => {
 
   console.log("Checking file:", file);
 
+// ======================
+// AMBIL NAMA WILAYAH DARI FILE
+// ======================
+const fileNameWithoutExt = file.replace(".xlsx", "").trim();
+
+// Hapus angka + spasi di depan
+const wilayahFromFile = fileNameWithoutExt.replace(/^\d+\s*/, "").trim();
+  
   const filePath = path.join(folderPath, file);
   const workbook = XLSX.readFile(filePath);
 
