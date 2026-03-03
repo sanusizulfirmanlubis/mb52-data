@@ -61,29 +61,99 @@ jobs:
             throw new Error("Folder personalia tidak ditemukan!");
           }
 
+          const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+
           fs.readdirSync(folderPath).forEach((file) => {
-            if (file.endsWith(".xlsx")) {
+            if (!file.endsWith(".xlsx")) return;
 
-              console.log("Checking file:", file);
+            console.log("Checking file:", file);
 
-              const filePath = path.join(folderPath, file);
-              const workbook = XLSX.readFile(filePath);
-              const sheet = workbook.Sheets[workbook.SheetNames[0]];
+            const filePath = path.join(folderPath, file);
+            const workbook = XLSX.readFile(filePath);
+            const sheet = workbook.Sheets[workbook.SheetNames[0]];
 
-              const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-              const headers = json[0];
+            const raw = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+            const headers = raw[0];
 
-              REQUIRED_HEADERS.forEach((req) => {
-                if (!headers.includes(req)) {
-                  throw new Error(
-                    `Header "${req}" tidak ditemukan di file ${file}`
-                  );
+            // ======================
+            // VALIDASI HEADER
+            // ======================
+            REQUIRED_HEADERS.forEach((req) => {
+              if (!headers.includes(req)) {
+                throw new Error(
+                  `Header "${req}" tidak ditemukan di file ${file}`
+                );
+              }
+            });
+
+            const rows = XLSX.utils.sheet_to_json(sheet);
+
+            rows.forEach((row, index) => {
+              const rowNumber = index + 2;
+
+              const nama = (row["Nama"] || "").toString().trim();
+              const nipp = (row["NIPP"] || "").toString().trim();
+              const pendidikan = (row["Pendidikan"] || "").toString().trim();
+              const mulaiDinas = (row["Mulai Dinas (YYYY-MM-DD)"] || "").toString().trim();
+              const tglLahir = (row["Tanggal Lahir (YYYY-MM-DD)"] || "").toString().trim();
+              const tmtPensiun = (row["TMT Pensiun (YYYY-MM-DD)"] || "").toString().trim();
+
+              const isVacant = nama.toLowerCase() === "vacant";
+
+              // ======================
+              // VALIDASI NON-VACANT
+              // ======================
+              if (!isVacant) {
+
+                if (!nipp) {
+                  throw new Error(`Baris ${rowNumber} (${file}): NIPP wajib diisi`);
                 }
-              });
 
-              const rows = XLSX.utils.sheet_to_json(sheet);
-              masterData = masterData.concat(rows);
-            }
+                if (!/^\d{5}$/.test(nipp)) {
+                  throw new Error(`Baris ${rowNumber} (${file}): NIPP harus 5 digit angka`);
+                }
+
+                if (!pendidikan) {
+                  throw new Error(`Baris ${rowNumber} (${file}): Pendidikan wajib diisi`);
+                }
+
+                if (!mulaiDinas) {
+                  throw new Error(`Baris ${rowNumber} (${file}): Mulai Dinas wajib diisi`);
+                }
+
+                if (!tglLahir) {
+                  throw new Error(`Baris ${rowNumber} (${file}): Tanggal Lahir wajib diisi`);
+                }
+
+                if (!tmtPensiun) {
+                  throw new Error(`Baris ${rowNumber} (${file}): TMT Pensiun wajib diisi`);
+                }
+
+                if (!dateRegex.test(mulaiDinas)) {
+                  throw new Error(`Baris ${rowNumber} (${file}): Mulai Dinas harus format YYYY-MM-DD`);
+                }
+
+                if (!dateRegex.test(tglLahir)) {
+                  throw new Error(`Baris ${rowNumber} (${file}): Tanggal Lahir harus format YYYY-MM-DD`);
+                }
+
+                if (!dateRegex.test(tmtPensiun)) {
+                  throw new Error(`Baris ${rowNumber} (${file}): TMT Pensiun harus format YYYY-MM-DD`);
+                }
+              }
+
+              // ======================
+              // VALIDASI VACANT
+              // ======================
+              if (isVacant) {
+                // Optional: pastikan NIPP kosong jika Vacant
+                // if (nipp) {
+                //   throw new Error(`Baris ${rowNumber} (${file}): Vacant tidak boleh memiliki NIPP`);
+                // }
+              }
+            });
+
+            masterData = masterData.concat(rows);
           });
 
           fs.writeFileSync(
