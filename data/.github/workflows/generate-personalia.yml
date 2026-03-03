@@ -1,0 +1,59 @@
+name: Generate Personalia Master JSON
+
+on:
+  push:
+    paths:
+      - 'data/personalia/*.xlsx'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install xlsx
+
+      - name: Generate Master JSON
+        run: |
+          node <<EOF
+          const fs = require("fs");
+          const path = require("path");
+          const XLSX = require("xlsx");
+
+          const folderPath = "data/personalia";
+          let masterData = [];
+
+          fs.readdirSync(folderPath).forEach((file) => {
+            if (file.endsWith(".xlsx")) {
+              const filePath = path.join(folderPath, file);
+              const workbook = XLSX.readFile(filePath);
+              const sheet = workbook.Sheets[workbook.SheetNames[0]];
+              const rows = XLSX.utils.sheet_to_json(sheet);
+
+              masterData = masterData.concat(rows);
+            }
+          });
+
+          fs.writeFileSync(
+            "data/personalia_master.json",
+            JSON.stringify(masterData, null, 2)
+          );
+
+          console.log("Master JSON generated");
+          EOF
+
+      - name: Commit JSON
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add data/personalia_master.json
+          git commit -m "Auto generate personalia_master.json" || echo "No changes"
+          git push
