@@ -67,9 +67,28 @@ fs.readdirSync(folderPath).forEach((file) => {
     const nipp = (nippRaw || "").toString().trim();
 
     const pendidikan = (row["Pendidikan"] || "").toString().trim();
-    const mulaiDinas = (row["Mulai Dinas (YYYY-MM-DD)"] || "").toString().trim();
-    const tglLahir = (row["Tanggal Lahir (YYYY-MM-DD)"] || "").toString().trim();
-    const tmtPensiun = (row["TMT Pensiun (YYYY-MM-DD)"] || "").toString().trim();
+function normalizeDate(value) {
+  if (!value) return "";
+
+  // Kalau sudah string YYYY-MM-DD
+  if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    return value;
+  }
+
+  // Kalau Excel date number
+  if (typeof value === "number") {
+    const excelEpoch = new Date(Date.UTC(1899, 11, 30));
+    const result = new Date(excelEpoch.getTime() + value * 86400000);
+    return result.toISOString().split("T")[0];
+  }
+
+  // Kalau Date object
+  if (value instanceof Date) {
+    return value.toISOString().split("T")[0];
+  }
+
+  return "";
+}
 
     const isVacant = nama.toLowerCase() === "vacant";
 
@@ -87,17 +106,17 @@ fs.readdirSync(folderPath).forEach((file) => {
         throw new Error(`Baris ${rowNumber} (${file}): Pendidikan wajib diisi`);
       }
 
-      if (!mulaiDinas || !dateRegex.test(mulaiDinas)) {
-        throw new Error(`Baris ${rowNumber} (${file}): Mulai Dinas wajib format YYYY-MM-DD`);
-      }
+if (!mulaiDinas) {
+  throw new Error(`Baris ${rowNumber} (${file}): Mulai Dinas wajib diisi`);
+}
 
-      if (!tglLahir || !dateRegex.test(tglLahir)) {
-        throw new Error(`Baris ${rowNumber} (${file}): Tanggal Lahir wajib format YYYY-MM-DD`);
-      }
+if (!tglLahir) {
+  throw new Error(`Baris ${rowNumber} (${file}): Tanggal Lahir wajib diisi`);
+}
 
-      if (!tmtPensiun || !dateRegex.test(tmtPensiun)) {
-        throw new Error(`Baris ${rowNumber} (${file}): TMT Pensiun wajib format YYYY-MM-DD`);
-      }
+if (!tmtPensiun) {
+  throw new Error(`Baris ${rowNumber} (${file}): TMT Pensiun wajib diisi`);
+}
     }
   });
 
