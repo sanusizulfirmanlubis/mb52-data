@@ -106,6 +106,14 @@ const wilayahFromFile = fileNameWithoutExt.replace(/^\d+\s*/, "").trim();
 
     const nama = (row["Nama"] || "").toString().trim();
 
+const wilayah = (row["Wilayah"] || "").toString().trim();
+
+if (wilayah !== wilayahFromFile) {
+  throw new Error(
+    `Baris ${rowNumber} (${file}): Wilayah "${wilayah}" tidak sesuai dengan nama file "${wilayahFromFile}"`
+  );
+}
+    
     let nippRaw = row["NIPP"];
     if (typeof nippRaw === "number") {
       nippRaw = Math.floor(nippRaw).toString();
