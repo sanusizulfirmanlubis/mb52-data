@@ -39,6 +39,7 @@ if (!fs.existsSync(folderPath)) {
 // DATE NORMALIZER
 // ======================
 function normalizeDate(value) {
+
   if (!value) return "";
 
   if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
@@ -59,19 +60,29 @@ function normalizeDate(value) {
 }
 
 // ======================
-// PROCESS FILES
+// GET FILE LIST
 // ======================
-fs.readdirSync(folderPath).forEach((file) => {
+const files = fs
+  .readdirSync(folderPath)
+  .filter((file) => file.endsWith(".xlsx"));
 
-  if (!file.endsWith(".xlsx")) return;
+console.log(`\nProcessing ${files.length} wilayah...\n`);
 
-  console.log(`\n📂 Checking file: ${file}`);
+// ======================
+// PROCESS FILE
+// ======================
+files.forEach((file) => {
+
+  console.log(`📂 Checking file: ${file}`);
 
   const wilayahFromFile = file.replace(".xlsx", "").trim();
 
   const filePath = path.join(folderPath, file);
 
-  const workbook = XLSX.readFile(filePath);
+  const workbook = XLSX.readFile(filePath, {
+    cellFormula: false,
+    cellHTML: false
+  });
 
   if (!workbook.SheetNames.length) {
     console.log(`⚠ File ${file} tidak memiliki sheet`);
@@ -80,28 +91,34 @@ fs.readdirSync(folderPath).forEach((file) => {
 
   const sheet = workbook.Sheets[workbook.SheetNames[0]];
 
-  const raw = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+  // FAST PARSE (hanya sekali)
+  const rows = XLSX.utils.sheet_to_json(sheet, {
+    defval: "",
+    raw: true
+  });
 
-  if (!raw.length) {
+  if (!rows.length) {
     console.log(`⚠ File ${file} kosong`);
     return;
   }
 
-  const headers = raw[0];
+  const headers = Object.keys(rows[0]);
 
   REQUIRED_HEADERS.forEach((req) => {
+
     if (!headers.includes(req)) {
+
       errorRows.push({
         file,
         row: "HEADER",
         message: `Header "${req}" tidak ditemukan`
       });
+
     }
+
   });
 
-  const rows = XLSX.utils.sheet_to_json(sheet);
-
-  let fileValidCount = 0;
+  let validCount = 0;
 
   rows.forEach((row, index) => {
 
@@ -110,15 +127,19 @@ fs.readdirSync(folderPath).forEach((file) => {
     try {
 
       const nama = (row["Nama"] || "").toString().trim();
+
       const wilayah = (row["Wilayah"] || "").toString().trim();
 
       if (wilayah !== wilayahFromFile) {
+
         errorRows.push({
           file,
           row: rowNumber,
           message: `Wilayah "${wilayah}" tidak sesuai dengan nama file`
         });
+
         return;
+
       }
 
       let nippRaw = row["NIPP"];
@@ -139,35 +160,23 @@ fs.readdirSync(folderPath).forEach((file) => {
 
       if (!isVacant) {
 
-        if (!nipp) {
-          throw "NIPP wajib diisi";
-        }
+        if (!nipp) throw "NIPP wajib diisi";
 
-        if (!/^\d{5}$/.test(nipp)) {
-          throw "NIPP harus 5 digit angka";
-        }
+        if (!/^\d{5}$/.test(nipp)) throw "NIPP harus 5 digit angka";
 
-        if (!pendidikan) {
-          throw "Pendidikan wajib diisi";
-        }
+        if (!pendidikan) throw "Pendidikan wajib diisi";
 
-        if (!mulaiDinas) {
-          throw "Mulai Dinas wajib diisi";
-        }
+        if (!mulaiDinas) throw "Mulai Dinas wajib diisi";
 
-        if (!tglLahir) {
-          throw "Tanggal Lahir wajib diisi";
-        }
+        if (!tglLahir) throw "Tanggal Lahir wajib diisi";
 
-        if (!tmtPensiun) {
-          throw "TMT Pensiun wajib diisi";
-        }
+        if (!tmtPensiun) throw "TMT Pensiun wajib diisi";
 
       }
 
       masterData.push(row);
 
-      fileValidCount++;
+      validCount++;
 
     } catch (err) {
 
@@ -181,7 +190,7 @@ fs.readdirSync(folderPath).forEach((file) => {
 
   });
 
-  stats[file] = fileValidCount;
+  stats[file] = validCount;
 
 });
 
@@ -190,7 +199,7 @@ fs.readdirSync(folderPath).forEach((file) => {
 // ======================
 fs.writeFileSync(
   "data/personalia_master.json",
-  JSON.stringify(masterData, null, 2)
+  JSON.stringify(masterData)
 );
 
 // ======================
@@ -212,7 +221,7 @@ console.log("\n================ SUMMARY ================");
 
 console.log(`Total Data Valid : ${masterData.length}`);
 
-console.log("\nData per file:");
+console.log("\nData per wilayah:");
 
 Object.keys(stats).forEach((file) => {
   console.log(`${file} : ${stats[file]} pegawai`);
@@ -230,6 +239,6 @@ if (errorRows.length > 0) {
 
 }
 
-console.log("=========================================\n");
+console.log("=========================================");
 
-console.log("✅ Master JSON generated successfully");
+console.log("\n✅ Master JSON generated successfully\n");
