@@ -174,19 +174,24 @@ files.forEach((file) => {
 
       }
 
-      masterData.push(row);
+      row._error = null;
+masterData.push(row);
 
       validCount++;
 
     } catch (err) {
 
-      errorRows.push({
-        file,
-        row: rowNumber,
-        message: err.toString()
-      });
+  row._error = err.toString();
 
-    }
+  masterData.push(row);
+
+  errorRows.push({
+    file,
+    row: rowNumber,
+    message: err.toString()
+  });
+
+}
 
   });
 
